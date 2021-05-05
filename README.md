@@ -33,7 +33,6 @@ ____
 | eva | eva | user |
 | elena | elena | user |
 | vitaliy | vitaliy | user |
-____
-
 | isa | isa | user |
 | alex | alex | user |
+____
