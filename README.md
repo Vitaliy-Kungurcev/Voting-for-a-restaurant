@@ -12,7 +12,7 @@
 [Изображение с примером](https://user-images.githubusercontent.com/71580397/117102675-3e7ad580-ad92-11eb-83cb-5ccdac2f6a0b.png)  
 
 * Изменить свой выбор пользователь может до 11:00.  
-[Изображение с примером](https://user-images.githubusercontent.com/71580397/117102699-50f50f00-ad92-11eb-8ba7-d93edaa6f4fb.png) 
+[Изображение с примером](https://user-images.githubusercontent.com/71580397/117122995-e81c8f80-adaf-11eb-98f8-3c54e6227806.png) 
 
 * Администратор может просматривать результат голосования и её историю  
 [Изображение с примером](https://user-images.githubusercontent.com/71580397/117099649-205da700-ad8b-11eb-9955-6078feaf354d.png)  
