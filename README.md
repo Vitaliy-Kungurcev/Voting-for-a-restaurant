@@ -1,1 +1,1 @@
-# Voting-for-a-restaurant
+# Голосование за ресторан
