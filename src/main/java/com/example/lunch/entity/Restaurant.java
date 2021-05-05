@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "restaurant")
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"name" , "date"})})
 public class Restaurant {
 
     @Id
@@ -24,7 +24,7 @@ public class Restaurant {
 
     @Column(name = "adress", nullable = false)
     @NotEmpty(message = "Адрес не должно быть пустым")
-    @Size(min = 2, max = 45, message = "Адрес должно быть от 2 до 45 символов")
+    @Size(min = 2, max = 45, message = "Поле должно быть от 2 до 45 символов")
     private String adress;
 
     @Column(name = "date")
@@ -37,8 +37,6 @@ public class Restaurant {
     @OneToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private List<Choise> choises;
-
-
 
     public Restaurant() {
     }
@@ -65,7 +63,6 @@ public class Restaurant {
         restaurant.getMeals().add(meal);
 
     }
-
 
     public int getId() {
         return id;

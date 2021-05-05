@@ -21,14 +21,14 @@
     </tr>
 
 
-    <c:forEach var="allRestarants" items="${allRestarants}">
+    <c:forEach var="allRestaurants" items="${allRestaurants}">
 
         <tr>
-        <td style="text-align: center;"><input type="radio" name="choiseinput" value=${allRestarants.id}>Голос</td>
-        <td>${allRestarants.name}</td>
-        <td>${allRestarants.adress}</td>
+        <td style="text-align: center;"><input type="radio" name="choiseinput" value=${allRestaurants.id} checked>Голос</td>
+        <td>${allRestaurants.name}</td>
+        <td>${allRestaurants.adress}</td>
 
-        <c:forEach var="meals" items="${allRestarants.meals}">
+        <c:forEach var="meals" items="${allRestaurants.meals}">
             <tr>
                 <td></td>
                 <td></td>

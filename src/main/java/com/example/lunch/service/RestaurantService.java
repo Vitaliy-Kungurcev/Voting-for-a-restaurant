@@ -12,7 +12,7 @@ public interface RestaurantService  {
 
     List<Restaurant> getAllByDate(LocalDate date);
 
-    void save(Restaurant restaurant);
+    boolean save(Restaurant restaurant);
 
     Restaurant get(int id);
 

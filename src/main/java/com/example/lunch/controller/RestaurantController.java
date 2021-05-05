@@ -28,9 +28,9 @@ public class RestaurantController {
 
     @GetMapping("/")
     @CacheEvict( value = "restaurants",allEntries=true )
-    public String allRestarants(Model model) {
-        List<Restaurant> allRestarants = restaurantService.getAllByDate(LocalDate.now());
-        model.addAttribute("allRestarants", allRestarants);
+    public String allRestaurants(Model model) {
+        List<Restaurant> allRestaurants = restaurantService.getAllByDate(dateToday);
+        model.addAttribute("allRestaurants", allRestaurants);
         model.addAttribute("dateToday", dateTodayString);
         return "allRestAdmin";
     }
@@ -38,32 +38,31 @@ public class RestaurantController {
     @GetMapping("/create")
     public String createRestaurant(Model model) {
         Restaurant restaurant = new Restaurant(dateToday);
-        String name = "create";
-        model.addAttribute("namePage", name);
+        model.addAttribute("namePage", "create");
         model.addAttribute("restaurant", restaurant);
         return "restaurantForm";
     }
 
     @GetMapping("/update")
-    public String updateRestarant(@RequestParam("restId") int id, Model model) {
+    public String updateRestaurant(@RequestParam("restId") int id, Model model) {
         Restaurant restaurant = restaurantService.get(id);
         restaurant.setDate(dateToday);
         model.addAttribute("restaurant", restaurant);
         return "restaurantForm";
     }
 
-
     @PostMapping("/save")
-    public String saveRestarant(@Valid @ModelAttribute("restaurant") Restaurant restaurant, BindingResult bindingResult) {
+    public String saveRestaurant(@Valid @ModelAttribute("restaurant") Restaurant restaurant, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "restaurantForm";
         }
-        restaurantService.save(restaurant);
+        if(restaurantService.save(restaurant)==false){
+            return "errorNewRestaurant";
+        };
         return "redirect:/restaurants/";
     }
 
     @GetMapping("/delete")
-
     public String deleteRestaurant(@RequestParam("restId") int id) {
         restaurantService.delete(id);
         return "redirect:/restaurants/";

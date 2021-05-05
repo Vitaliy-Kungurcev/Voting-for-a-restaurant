@@ -20,20 +20,15 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-
     @Override
     @Cacheable("restaurants")
     public List<Restaurant> getAllByDate(LocalDate date) {
-
-        List<Restaurant> allRestaurantsByDay=restaurantRepository.findRestaurantByDate(date);
-        return allRestaurantsByDay;
+        return restaurantRepository.findRestaurantByDate(date);
     }
-
 
     @Override
     @CacheEvict( value = "restaurants",allEntries=true )
-    public void save(Restaurant restaurant) {
-
+    public boolean save(Restaurant restaurant) {
        if (restaurant.getId() != 0 )  {
             Restaurant restaurant1 = get(restaurant.getId());
             restaurant.setMeals(restaurant1.getMeals());
@@ -42,8 +37,8 @@ public class RestaurantServiceImpl implements RestaurantService {
           try {
               restaurantRepository.save(restaurant);
           }catch (DataIntegrityViolationException dataIntegrityViolationException){
-              restaurant=null;
-          }
+             return false;
+          }return true;
     }
 
     @Override

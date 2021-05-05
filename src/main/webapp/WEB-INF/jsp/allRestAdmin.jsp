@@ -25,12 +25,12 @@
 
 
 
-    <c:forEach var="rest" items="${allRestarants}">
+    <c:forEach var="rest" items="${allRestaurants}">
         <tr>
-        <c:url var="updateRestarant" value="/restaurants/update">
+        <c:url var="updateRestaurant" value="/restaurants/update">
             <c:param name="restId" value="${rest.id}"/></c:url>
 
-        <c:url var="deleteRestarant" value="/restaurants/delete">
+        <c:url var="deleteRestaurant" value="/restaurants/delete">
             <c:param name="restId" value="${rest.id}"/></c:url>
 
 
@@ -39,10 +39,10 @@
 
 
             <td><input type="button" value="Изменить"
-                       onclick="window.location.href = '${updateRestarant}'"/>
+                       onclick="window.location.href = '${updateRestaurant}'"/>
 
                 <input type="button" value="Удалить"
-                       onclick="window.location.href = '${deleteRestarant}'"/>
+                       onclick="window.location.href = '${deleteRestaurant}'"/>
 
 
             <td>${rest.name}</td>

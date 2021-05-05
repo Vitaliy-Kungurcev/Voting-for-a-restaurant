@@ -14,11 +14,11 @@
 
 
 <form:form action="save" modelAttribute="meal" method="post">
-<input type="hidden" name="restId" value="${restId}">
+
 <tr>
     <td>
             <form:hidden path="id"/>
-
+            <form:hidden path="restaurant_id"/>
         Название:
             <form:input path="name"/>
             <form:errors path="name"/>

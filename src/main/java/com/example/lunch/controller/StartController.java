@@ -6,7 +6,6 @@ import com.example.lunch.entity.Restaurant;
 import com.example.lunch.service.ChoiseService;
 import com.example.lunch.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -33,35 +32,20 @@ public class StartController {
 
     @GetMapping("/")
     public String startPage(Model model) {
-
         Choise.DateChoise dateChoise = new Choise.DateChoise();
-
         model.addAttribute("dateChoise", dateChoise);
         model.addAttribute("restId", 0);
         return "startPage";
     }
 
-    @GetMapping("/your_choise")
-    public String checkChoise(@AuthenticationPrincipal User user, Model model, RedirectAttributes rm) {
-        String userName = user.getUsername();
-        Choise choise = choiseService.checkChoiseUser(userName, LocalDate.now());
-
-        if (choise != null) {
-            model.addAttribute(choise);
-            return "choiseUser";
-        }
-        rm.addAttribute("userName",userName);
-        return "redirect:/choise";
-    }
 
     @GetMapping("/choise")
     public String userChoise(@RequestParam("userName") String userName, Model model) {
-        if (LocalTime.now().getHour() > 16) {
+        if (LocalTime.now().getHour() > 20) {
             return "errorChoise";
         }
-
-        List<Restaurant> allRestarants = restaurantService.getAllByDate(LocalDate.now());
-        model.addAttribute("allRestarants", allRestarants);
+        List<Restaurant> allRestaurants = restaurantService.getAllByDate(LocalDate.now());
+        model.addAttribute("allRestaurants", allRestaurants);
         model.addAttribute("userName", userName);
 
         return "allRestAndMenuUser";
@@ -72,13 +56,11 @@ public class StartController {
     public String rezultChoise(Model model) {
         LocalDate dateToday = LocalDate.now();
         List<Choise> allChoiseToday = choiseService.getChoiseDate(dateToday);
-        model.addAttribute("date", LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        model.addAttribute("date", dateToday.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         if (allChoiseToday.size() == 0) {
             return "noChoise";
         }
         model.addAttribute("allChoiseToday", allChoiseToday);
-
-
         return "rezultChoiseAdmin";
     }
 

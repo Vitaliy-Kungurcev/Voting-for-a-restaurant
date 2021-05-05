@@ -29,7 +29,7 @@
 
         <c:url var="updateMeals" value="/restaurants/menu/update">
             <c:param name="mealId" value="${meals.id}"/>
-            <c:param name="restId" value="${restId}"/>
+
         </c:url>
 
         <c:url var="deleteMeals" value="/restaurants/menu/delete">

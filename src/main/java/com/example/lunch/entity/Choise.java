@@ -1,13 +1,9 @@
 package com.example.lunch.entity;
 
 
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
-
 
 @Entity
 @Table(name = "choise")
@@ -33,6 +29,8 @@ public class Choise {
 
     @Column(name = "date")
     private LocalDate date;
+
+
 
     public Choise() {
     }
@@ -112,6 +110,7 @@ public class Choise {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
 
     public static class DateChoise {
 

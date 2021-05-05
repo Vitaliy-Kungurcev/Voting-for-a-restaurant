@@ -15,9 +15,7 @@ import java.util.List;
 
 public interface ChoiseRepository extends JpaRepository<Choise,Integer> {
 
-
-
-    public Choise findByUserNameAndDate(String userName,LocalDate date);
+    Choise findByUserNameAndDate(String userName,LocalDate date);
 
     @Query(value = "select * from choise where date=:localDate order by count(*)over(partition by rest_name)desc",nativeQuery=true)
     List<Choise> getChoiseDate(@Param("localDate") LocalDate localDate);

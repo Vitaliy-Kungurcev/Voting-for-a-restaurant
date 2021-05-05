@@ -7,14 +7,9 @@ import java.util.List;
 
 public interface MealService {
 
-    void  save(Meal meal, int id);
-
-
     Meal get(int id);
 
     void delete(int id);
 
-
-
-
+    void save(Meal meal);
 }
