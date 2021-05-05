@@ -24,14 +24,14 @@ ____
 
 | Логин | Пороль | Должность |
 |----------------|:---------:|----------------:|
-| ivan | ivan | текст |
-| mila | mila | текст |
-| rita | rita | текст |
-| egor | egor | текст |
-| adam | adam | текст |
-| oleg | ivan | текст |
-| eva | eva | текст |
-| elena | elena | текст |
-| vitaliy | vitaliy | текст |
-| isa | isa | текст |
-| alex | alex | текст |
+| ivan | ivan | admin |
+| mila | mila | user |
+| rita | rita | user |
+| egor | egor | user |
+| adam | adam | user |
+| oleg | ivan | user |
+| eva | eva | user |
+| elena | elena | user |
+| vitaliy | vitaliy | user |
+| isa | isa | user |
+| alex | alex | user |
